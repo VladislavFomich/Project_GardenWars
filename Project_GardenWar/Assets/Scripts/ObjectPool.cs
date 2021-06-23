@@ -35,10 +35,11 @@ public class ObjectPool : MonoBehaviour
             {
                 item.transform.position = pos;
                 item.transform.SetParent(null);
+                item.GetComponent<IPoolable>().Reset();
                 item.SetActive(true);
                 ReturnToPool returnToPool = item.GetComponent<ReturnToPool>();
                 returnToPool.OnObjectHit += GoToPool;
-                
+
                 return item;
             }
         }

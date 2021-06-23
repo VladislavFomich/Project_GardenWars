@@ -980,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215399278}
   - component: {fileID: 1215399279}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyEndPoint
   m_TagString: EndPoint
   m_Icon: {fileID: 0}
@@ -1503,7 +1503,7 @@ PrefabInstance:
       objectReference: {fileID: 1503785518}
     - target: {fileID: 2013302775, guid: 719b84fb2b96853419aa21a2482f2dd3, type: 3}
       propertyPath: speedAttack
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6014590870755470329, guid: 719b84fb2b96853419aa21a2482f2dd3, type: 3}
       propertyPath: m_Name

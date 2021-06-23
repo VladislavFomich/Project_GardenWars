@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralEnemy : MonoBehaviour
+public class GeneralEnemy : MonoBehaviour, IPoolable
 {
     [SerializeField]
     private int health;
@@ -10,17 +10,17 @@ public class GeneralEnemy : MonoBehaviour
     private int speed;
     [SerializeField]
     private int damage;
-
+    [SerializeField]
     private  Transform moveTarget;
     private bool addedInList;
     private bool takePlant;
    
 
+
     private void Update()
     {
         FindTarget();
         Move(moveTarget);
-       
     }
 
     private void Move(Transform target)
@@ -36,8 +36,11 @@ public class GeneralEnemy : MonoBehaviour
         }
         if (collision.GetComponent<GeneralPlant>())
         {
-            Debug.Log("Take plant");
-            takePlant = true;
+            if (collision.GetComponent<GeneralPlant>().enemyTakeIt == false)
+            {
+                takePlant = true;
+            }
+
         }
     }
     private void FindTarget()
@@ -56,6 +59,11 @@ public class GeneralEnemy : MonoBehaviour
                 {
                     moveTarget = item;
                 }
+               
+            }
+            if (moveTarget.gameObject.GetComponent<GeneralPlant>().enemyTakeIt == true)
+            {
+                moveTarget = FieldManager.Instance.house;
             }
         }
         if (takePlant)
@@ -64,5 +72,12 @@ public class GeneralEnemy : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        takePlant = false;
+        moveTarget = null;
+        addedInList = false;
+        
+    }
 }
     

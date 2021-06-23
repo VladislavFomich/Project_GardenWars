@@ -27,7 +27,6 @@ public class ButtonPlant : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         {
             FieldManager.Instance.plants.Add(plant.transform);
         }    
-        Debug.Log("End Drag");
     }
 
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralPlant : MonoBehaviour
+public class GeneralPlant : MonoBehaviour, IPoolable
 {
 
     public ObjectPool bulletPool;
@@ -11,10 +11,9 @@ public class GeneralPlant : MonoBehaviour
     public Transform target;
     private bool startAttack;
 
-    Transform enemyPosition;
-    bool enemyTakeIt;
+   public bool enemyTakeIt;
 
-    private void Start()
+    public void Start()
     {
         var obj = GameObject.FindGameObjectsWithTag("BulletManager");
         bulletPool = obj[0].GetComponent<ObjectPool>();
@@ -25,7 +24,7 @@ public class GeneralPlant : MonoBehaviour
         FindTarget();
         if (enemyTakeIt == true)
         {
-            transform.position = enemyPosition.position;
+            transform.position = target.position;
         }
     }
 
@@ -51,7 +50,7 @@ public class GeneralPlant : MonoBehaviour
                 float distance = Vector2.Distance(transform.position, item.transform.position);
                 if (distance < Vector2.Distance(transform.position, target.position))
                 {
-                    target = item;
+                    target = item; 
                 }
             }
         }
@@ -62,9 +61,15 @@ public class GeneralPlant : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Plant Trigger");
-        enemyPosition = collision.gameObject.transform;
+        target = collision.gameObject.transform;
         enemyTakeIt = true;
+   
     }
 
+    public void Reset()
+    {
+        enemyTakeIt = false;
+        target = null;
+        startAttack = false;
+    }
 }

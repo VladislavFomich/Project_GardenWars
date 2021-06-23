@@ -10,13 +10,23 @@ public class ReturnToPool : MonoBehaviour
     {
         if (gameObject.tag == "Bullet")
         {
-            Debug.Log("Hit!");
             OnObjectHit?.Invoke(this);
         }
         if (collision.tag == "EndPoint")
         {
+            
+            if (gameObject.GetComponent<GeneralPlant>())
+            {
+                FieldManager.Instance.plants.Remove(gameObject.transform);
+                Debug.Log("Plant Remove");
+            }
+            if (gameObject.GetComponent<GeneralEnemy>())
+            {
+                FieldManager.Instance.enemy.Remove(gameObject.transform);
+            }
             OnObjectHit?.Invoke(this);
         }
+
     }
 
 }
