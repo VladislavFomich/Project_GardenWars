@@ -11,11 +11,11 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     [SerializeField]
     private int damage;
     [SerializeField]
-    private  Transform moveTarget;
+    public  Transform moveTarget;
     private bool addedInList;
-    private bool takePlant;
-   
+    public bool takePlant;
 
+    public GeneralPlant plant;
 
     private void Update()
     {
@@ -36,39 +36,52 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
         }
         if (collision.GetComponent<GeneralPlant>())
         {
-            if (collision.GetComponent<GeneralPlant>().enemyTakeIt == false)
+            if (collision.gameObject.GetComponent<GeneralPlant>().enemyTakeIt == false)
             {
                 takePlant = true;
+                plant = collision.GetComponent<GeneralPlant>();
             }
 
+        }
+        if (collision.tag == "EndPoint")
+        {
+            FieldManager.Instance.enemy.Remove(gameObject.transform);
+            gameObject.GetComponent<ReturnToPool>().Death();
         }
     }
     private void FindTarget()
     {
-        if (FieldManager.Instance.plants.Count == 0)
+        moveTarget = null;
+
+            if (takePlant)
+            {
+                moveTarget = FieldManager.Instance.spawn;
+            return;
+            }
+            
+
+        if (FieldManager.Instance.plants.Count > 0)
         {
-            moveTarget = FieldManager.Instance.house;
-        }
-        else if (FieldManager.Instance.plants.Count > 0)
-        {
-            moveTarget = FieldManager.Instance.plants[0];
+            //  moveTarget = FieldManager.Instance.plants[0];
+            var distanceToTarget = float.MaxValue;
             foreach (var item in FieldManager.Instance.plants)
             {
-                float distance = Vector2.Distance(transform.position, item.transform.position);
-                if (distance < Vector2.Distance(transform.position, moveTarget.position))
+                if (item.gameObject.GetComponent<GeneralPlant>().enemyTakeIt == false)
                 {
-                    moveTarget = item;
+                    float distance = Vector2.Distance(transform.position, item.transform.position);
+                    if (distance <= distanceToTarget)
+                    {
+                        distanceToTarget = distance;
+                        moveTarget = item;
+                    }
                 }
+                
                
             }
-            if (moveTarget.gameObject.GetComponent<GeneralPlant>().enemyTakeIt == true)
-            {
-                moveTarget = FieldManager.Instance.house;
-            }
         }
-        if (takePlant)
+        if (moveTarget == null)
         {
-            moveTarget = FieldManager.Instance.spawn;
+            moveTarget = FieldManager.Instance.house;
         }
     }
 

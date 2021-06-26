@@ -127,6 +127,9 @@ MonoBehaviour:
   health: 0
   speed: 1
   damage: 0
+  moveTarget: {fileID: 0}
+  takePlant: 0
+  plant: {fileID: 0}
 --- !u!50 &5272065973066062754
 Rigidbody2D:
   serializedVersion: 4

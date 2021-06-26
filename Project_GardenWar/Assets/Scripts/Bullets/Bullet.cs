@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour,IPoolable
     {
 
         CustomStart();
+        house.target = null;
     }
 
     public void CustomStart()
@@ -23,5 +24,11 @@ public class Bullet : MonoBehaviour,IPoolable
     {
         transform.position = Vector3.MoveTowards(transform.position, house.target.position, speed * Time.deltaTime);
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameObject.GetComponent<ReturnToPool>().Death();
+    }
+
+
 }

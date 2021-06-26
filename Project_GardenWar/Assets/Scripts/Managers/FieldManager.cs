@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FieldManager : Singleton<FieldManager>
 {
@@ -10,6 +11,7 @@ public class FieldManager : Singleton<FieldManager>
     public List<Transform> enemy;
     public float overlapRadius = 10f;
 
+   // public List<Wave> waves;
 
     private void Awake()
     {
@@ -20,4 +22,12 @@ public class FieldManager : Singleton<FieldManager>
                 house = item.transform;
         }
     }
+
+
 }
+//[Serializable]
+//public struct Wave
+//{
+//    public float timeToNextWave;
+//    public int enemise;
+//}

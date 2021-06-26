@@ -12,6 +12,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     private bool startAttack;
 
    public bool enemyTakeIt;
+   
 
     public void Start()
     {
@@ -24,7 +25,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
         FindTarget();
         if (enemyTakeIt == true)
         {
-            transform.position = target.position;
+            transform.position = target.transform.position;
         }
     }
 
@@ -32,7 +33,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     {
         while (true)
         {
-            if (startAttack)
+            if (startAttack && gameObject.GetComponent<BoxCollider2D>().enabled == true)
             {
                 bulletPool.ObjectAwake(spawn.transform.position);
             }
@@ -44,12 +45,13 @@ public class GeneralPlant : MonoBehaviour, IPoolable
         if (FieldManager.Instance.enemy.Count > 0)
         {
             startAttack = true;
-            target = FieldManager.Instance.enemy[0];
+            var distanceToTarget = float.MaxValue;
             foreach (var item in FieldManager.Instance.enemy)
             {
                 float distance = Vector2.Distance(transform.position, item.transform.position);
-                if (distance < Vector2.Distance(transform.position, target.position))
+                if (distance < distanceToTarget)
                 {
+                    distanceToTarget = distance;
                     target = item; 
                 }
             }
@@ -61,9 +63,24 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        Debug.Log(collision.name);
         target = collision.gameObject.transform;
-        enemyTakeIt = true;
-   
+        if (gameObject.transform == collision.gameObject.GetComponent<GeneralEnemy>().moveTarget)
+        {
+            enemyTakeIt = true;
+        }
+        
+        ReturnToPool returnToPool = collision.gameObject.GetComponent<ReturnToPool>();
+        returnToPool.OnObjectHit += GoToPool;
+        
+    }
+
+    void GoToPool(ReturnToPool returnToPool)
+    {
+        returnToPool.OnObjectHit -= GoToPool;
+        FieldManager.Instance.plants.Remove(gameObject.transform);
+        gameObject.GetComponent<ReturnToPool>().Death();
     }
 
     public void Reset()

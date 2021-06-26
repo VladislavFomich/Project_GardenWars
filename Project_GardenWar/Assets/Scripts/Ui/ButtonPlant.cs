@@ -19,14 +19,15 @@ public class ButtonPlant : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        plant = plantsManager.ObjectAwake(eventData.position);
+         plant = plantsManager.ObjectAwake(eventData.position);
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         if (addedInList == false)
         {
             FieldManager.Instance.plants.Add(plant.transform);
-        }    
+        }
+        plant.GetComponent<BoxCollider2D>().enabled = true;
     }
 
 
