@@ -14,7 +14,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
    public bool enemyTakeIt;
    
 
-    public void Start()
+    public void CustomStart()
     {
         var obj = GameObject.FindGameObjectsWithTag("BulletManager");
         bulletPool = obj[0].GetComponent<ObjectPool>();
@@ -64,7 +64,6 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        Debug.Log(collision.name);
         target = collision.gameObject.transform;
         if (gameObject.transform == collision.gameObject.GetComponent<GeneralEnemy>().moveTarget)
         {
@@ -85,6 +84,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
 
     public void Reset()
     {
+        CustomStart();
         enemyTakeIt = false;
         target = null;
         startAttack = false;

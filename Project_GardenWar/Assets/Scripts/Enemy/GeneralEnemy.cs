@@ -34,13 +34,10 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
             FieldManager.Instance.enemy.Add(gameObject.transform);
             addedInList = true;
         }
-        if (collision.GetComponent<GeneralPlant>())
+        if (collision.GetComponent<GeneralPlant>() && takePlant == false)
         {
-            if (collision.gameObject.GetComponent<GeneralPlant>().enemyTakeIt == false)
-            {
                 takePlant = true;
                 plant = collision.GetComponent<GeneralPlant>();
-            }
 
         }
         if (collision.tag == "EndPoint")

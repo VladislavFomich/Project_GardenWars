@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolForObject: {fileID: 5243802188900643945, guid: de8c0e602f2d5e24eb8a59d23abe0d37, type: 3}
-  amount: 40
+  amount: 1
 --- !u!4 &790968195
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,7 +1014,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.34261656}
+  m_Offset: {x: -0.08223081, y: 0.34261656}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1025,7 +1025,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.31476688}
+  m_Size: {x: 13.49914, y: 0.31476688}
   m_EdgeRadius: 0
 --- !u!1 &1295259986
 GameObject:
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolForObject: {fileID: 6410191424051724681, guid: bc16daaaefdb28f4f8fd3c5998877175, type: 3}
-  amount: 20
+  amount: 1
 --- !u!114 &1376337315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolForObject: {fileID: 4530123219231298024, guid: 476cd823668360d47b1ee355951ae7a8, type: 3}
-  amount: 300
+  amount: 1
 --- !u!4 &1503785519
 Transform:
   m_ObjectHideFlags: 0
