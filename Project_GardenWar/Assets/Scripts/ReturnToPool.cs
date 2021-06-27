@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ReturnToPool : MonoBehaviour
 {
-    public delegate void HitTheTargetDelegate(ReturnToPool bullet);
+    public delegate void HitTheTargetDelegate(ReturnToPool objectt);
     public event HitTheTargetDelegate OnObjectHit;
-  
-       public void Death() 
-        {
+
+    public void Death()
+    {
         Debug.Log(gameObject.name);
         OnObjectHit?.Invoke(this);
-        }
-     
+    }
 }

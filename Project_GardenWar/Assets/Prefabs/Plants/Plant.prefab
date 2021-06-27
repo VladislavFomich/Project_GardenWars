@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 232712097244335001}
   - component: {fileID: -1659041286909599912}
   - component: {fileID: 352276161}
-  - component: {fileID: -1779503429790597759}
   - component: {fileID: -2031209226898487645}
+  - component: {fileID: 4946111708604006191}
   m_Layer: 7
   m_Name: Plant
   m_TagString: Plant
@@ -130,18 +130,6 @@ MonoBehaviour:
   speedAttack: 1
   target: {fileID: 0}
   enemyTakeIt: 0
---- !u!114 &-1779503429790597759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5243802188900643945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 421f738d15b93b540aa9fff5dc09041d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-2031209226898487645
 Rigidbody2D:
   serializedVersion: 4
@@ -163,6 +151,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4946111708604006191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243802188900643945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421f738d15b93b540aa9fff5dc09041d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8752868633452023055
 GameObject:
   m_ObjectHideFlags: 0

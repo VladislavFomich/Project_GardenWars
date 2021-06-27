@@ -7,7 +7,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
 
     public ObjectPool bulletPool;
     public GameObject spawn;
-    public float speedAttack;
+    public float bulletSpawnTime;
     public Transform target;
     private bool startAttack;
 
@@ -37,7 +37,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
             {
                 bulletPool.ObjectAwake(spawn.transform.position);
             }
-            yield return new WaitForSeconds(speedAttack);
+            yield return new WaitForSeconds(bulletSpawnTime);
         }
     }
     private void FindTarget() 

@@ -10,6 +10,7 @@ public class FieldManager : Singleton<FieldManager>
     public List<Transform> plants;
     public List<Transform> enemy;
     public float overlapRadius = 10f;
+    public Transform houseBulletSpawn;
 
    // public List<Wave> waves;
 
