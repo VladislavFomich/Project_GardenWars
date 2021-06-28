@@ -5,11 +5,11 @@ using UnityEngine;
 public class GeneralEnemy : MonoBehaviour, IPoolable
 {
     [SerializeField]
-    private int health;
+    private int health = 100;
     [SerializeField]
-    private int speed;
+    private float speed;
     [SerializeField]
-    private int damage;
+    public int damage;
     [SerializeField]
     public  Transform moveTarget;
     private bool addedInList;
@@ -21,6 +21,10 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     {
         FindTarget();
         Move(moveTarget);
+        if (health <= 0)
+        {
+            gameObject.GetComponent<ReturnToPool>().Death();
+        }
     }
 
     private void Move(Transform target)
@@ -44,6 +48,10 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
         {
             FieldManager.Instance.enemy.Remove(gameObject.transform);
             gameObject.GetComponent<ReturnToPool>().Death();
+        }
+        if (collision.GetComponent<GeneralBullet>())
+        {
+            health -= collision.GetComponent<GeneralBullet>().damage;
         }
     }
     private void FindTarget()

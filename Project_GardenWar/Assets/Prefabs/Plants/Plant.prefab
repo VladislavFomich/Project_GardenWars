@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 0}
   spawn: {fileID: 8752868633452023055}
-  speedAttack: 1
+  bulletSpawnTime: 1
   target: {fileID: 0}
   enemyTakeIt: 0
 --- !u!50 &-2031209226898487645

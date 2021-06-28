@@ -1691,9 +1691,17 @@ PrefabInstance:
       propertyPath: speedAttack
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1752472063292772034, guid: 719b84fb2b96853419aa21a2482f2dd3, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6014590870755470329, guid: 719b84fb2b96853419aa21a2482f2dd3, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014590870755470329, guid: 719b84fb2b96853419aa21a2482f2dd3, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6014590870755470329, guid: 719b84fb2b96853419aa21a2482f2dd3, type: 3}
       propertyPath: m_IsActive

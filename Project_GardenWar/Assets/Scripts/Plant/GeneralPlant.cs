@@ -16,8 +16,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
 
     public void CustomStart()
     {
-        var obj = GameObject.FindGameObjectsWithTag("BulletManager");
-        bulletPool = obj[0].GetComponent<ObjectPool>();
+        bulletPool = GameObject.Find("PlantBulletManager").GetComponent<ObjectPool>();
         StartCoroutine(SpawnBullet());
     }
     private void Update()

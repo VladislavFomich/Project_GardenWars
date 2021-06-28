@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HouseBullet : MonoBehaviour, IPoolable
+public class HouseBullet : GeneralBullet, IPoolable
 {
-    public float bulletSpeed;
+    
     public PlayerShoot playerShoot;
+    
     public void Reset()
     {
         CustomStart();
@@ -17,8 +18,5 @@ public class HouseBullet : MonoBehaviour, IPoolable
         gameObject.GetComponent<Rigidbody2D>().velocity = playerShoot.dir * bulletSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        gameObject.GetComponent<ReturnToPool>().Death();
-    }
+   
 }

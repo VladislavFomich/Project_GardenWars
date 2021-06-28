@@ -6,22 +6,14 @@ public class House : MonoBehaviour
 {
     [SerializeField]
     private int health;
-    public ObjectPool bulletPool;
-    public GameObject spawn;
-    public float speedAttack;
     public Transform target;
-    private bool startAttack;
 
-    private void Start()
-    {
-        StartCoroutine(SpawnBullet());
-    }
+
     private void Update()
     {
 
         if (FieldManager.Instance.enemy.Count > 0)
         {
-            startAttack = true;
             var distanceToTarget = float.MaxValue;
             foreach (var item in FieldManager.Instance.enemy)
             {
@@ -33,22 +25,12 @@ public class House : MonoBehaviour
                 }
             }
         }
-        if (FieldManager.Instance.enemy.Count == 0)
-        {
-            startAttack = false;
-        }
     }
 
-    IEnumerator SpawnBullet()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-              while (true)
-            {
-            if (startAttack)
-            {
-                bulletPool.ObjectAwake(spawn.transform.position);
-            }
-                yield return new WaitForSeconds(speedAttack);
-            }
+        health -= collision.gameObject.GetComponent<GeneralEnemy>().damage;
+        Debug.Log(health);
     }
 
 }
