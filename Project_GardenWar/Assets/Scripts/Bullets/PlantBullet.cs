@@ -22,6 +22,10 @@ public class PlantBullet : GeneralBullet, IPoolable
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, house.target.position, bulletSpeed * Time.deltaTime);
+        if (FieldManager.Instance.enemy.Count == 0)
+        {
+            gameObject.GetComponent<ReturnToPool>().Death();
+        }
     }
 
 

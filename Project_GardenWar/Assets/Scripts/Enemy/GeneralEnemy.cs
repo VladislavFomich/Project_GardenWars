@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneralEnemy : MonoBehaviour, IPoolable
 {
     [SerializeField]
-    private int health = 100;
+    private int health;
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -16,13 +16,19 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     public bool takePlant;
 
     public GeneralPlant plant;
+    int firstHealth;
 
+    private void Awake()
+    {
+        firstHealth = health;
+    }
     private void Update()
     {
         FindTarget();
         Move(moveTarget);
         if (health <= 0)
         {
+            FieldManager.Instance.enemy.Remove(gameObject.transform);
             gameObject.GetComponent<ReturnToPool>().Death();
         }
     }
@@ -67,7 +73,6 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
 
         if (FieldManager.Instance.plants.Count > 0)
         {
-            //  moveTarget = FieldManager.Instance.plants[0];
             var distanceToTarget = float.MaxValue;
             foreach (var item in FieldManager.Instance.plants)
             {
@@ -95,7 +100,7 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
         takePlant = false;
         moveTarget = null;
         addedInList = false;
-        
+        health = firstHealth;
     }
 }
     
