@@ -14,6 +14,8 @@ public class PlantBullet : GeneralBullet, IPoolable
     public void CustomStart()
     {
         house = FieldManager.Instance.house.GetComponent<House>();
+        ReturnToPool returnToPool = house.target.GetComponent<ReturnToPool>();
+        returnToPool.OnObjectHit += GoToPool;
     }
     public void Start()
     {
@@ -22,11 +24,11 @@ public class PlantBullet : GeneralBullet, IPoolable
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, house.target.position, bulletSpeed * Time.deltaTime);
-        if (FieldManager.Instance.enemy.Count == 0)
-        {
-            gameObject.GetComponent<ReturnToPool>().Death();
-        }
     }
-
+    void GoToPool(ReturnToPool returnToPool)
+    {
+        returnToPool.OnObjectHit -= GoToPool;
+        gameObject.GetComponent<ReturnToPool>().Death();
+    }
 
 }

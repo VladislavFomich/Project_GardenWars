@@ -76,16 +76,26 @@ public class GeneralPlant : MonoBehaviour, IPoolable
 
     void GoToPool(ReturnToPool returnToPool)
     {
-        returnToPool.OnObjectHit -= GoToPool;
-        FieldManager.Instance.plants.Remove(gameObject.transform);
-        gameObject.GetComponent<ReturnToPool>().Death();
+        if (target.gameObject.GetComponent<GeneralEnemy>().stayOnGround)
+        {
+            returnToPool.OnObjectHit -= GoToPool;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            Reset();          
+        }
+        else 
+        {
+            returnToPool.OnObjectHit -= GoToPool;
+            FieldManager.Instance.plants.Remove(gameObject.transform);
+            gameObject.GetComponent<ReturnToPool>().Death();
+        }
+        
     }
 
     public void Reset()
     {
-        CustomStart();
         enemyTakeIt = false;
         target = null;
         startAttack = false;
+        CustomStart();
     }
 }

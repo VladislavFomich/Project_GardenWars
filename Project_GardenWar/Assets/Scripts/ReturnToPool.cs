@@ -9,7 +9,6 @@ public class ReturnToPool : MonoBehaviour
 
     public void Death()
     {
-        Debug.Log(gameObject.name);
         OnObjectHit?.Invoke(this);
     }
 }

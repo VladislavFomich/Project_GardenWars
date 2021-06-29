@@ -14,7 +14,7 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     public  Transform moveTarget;
     private bool addedInList;
     public bool takePlant;
-
+    public bool stayOnGround;
     public GeneralPlant plant;
     int firstHealth;
 
@@ -39,6 +39,7 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if (addedInList == false)
         {
             FieldManager.Instance.enemy.Add(gameObject.transform);
@@ -52,12 +53,20 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
         }
         if (collision.tag == "EndPoint")
         {
+            stayOnGround = false;
             FieldManager.Instance.enemy.Remove(gameObject.transform);
             gameObject.GetComponent<ReturnToPool>().Death();
         }
         if (collision.GetComponent<GeneralBullet>())
         {
             health -= collision.GetComponent<GeneralBullet>().damage;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.name == "Ground")
+        {
+            stayOnGround = true;
         }
     }
     private void FindTarget()
@@ -97,6 +106,7 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
 
     public void Reset()
     {
+        stayOnGround = false;
         takePlant = false;
         moveTarget = null;
         addedInList = false;
