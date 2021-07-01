@@ -7,7 +7,9 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     [SerializeField]
     private int health;
     [SerializeField]
-    private float speed;
+    private float walkSpeed;
+    [SerializeField]
+    private float waitAttackSpeed;
     [SerializeField]
     public int damage;
     [SerializeField]
@@ -17,10 +19,17 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     public bool stayOnGround;
     public GeneralPlant plant;
     int firstHealth;
-
+    private bool attackHouse;
+    private House house;
     private void Awake()
     {
         firstHealth = health;
+    }
+    
+   private void CustomStart()
+    {
+        house = FieldManager.Instance.house.GetComponent<House>();
+        StartCoroutine(AttackHouse());
     }
     private void Update()
     {
@@ -31,11 +40,15 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
             FieldManager.Instance.enemy.Remove(gameObject.transform);
             gameObject.GetComponent<ReturnToPool>().Death();
         }
+        if (Vector2.Distance(transform.position, FieldManager.Instance.house.position) > 0.2f)
+        {
+            attackHouse = false;
+        }
     }
 
     private void Move(Transform target)
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, walkSpeed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -67,6 +80,15 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
         if (collision.name == "Ground")
         {
             stayOnGround = true;
+        }
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Enter");
+        if (collision.gameObject.GetComponent<House>())
+        {
+            attackHouse = true;
         }
     }
     private void FindTarget()
@@ -103,14 +125,27 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
             moveTarget = FieldManager.Instance.house;
         }
     }
+    IEnumerator AttackHouse()
+    {
+        while (true)
+        {
+            if (attackHouse)
+            {
+                house.health -= damage;
+            }
+            yield return new WaitForSeconds(waitAttackSpeed);
+        }
+    }
 
     public void Reset()
     {
+        attackHouse = false;
         stayOnGround = false;
         takePlant = false;
         moveTarget = null;
         addedInList = false;
         health = firstHealth;
+        CustomStart();
     }
 }
     

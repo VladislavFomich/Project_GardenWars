@@ -5,7 +5,7 @@ using UnityEngine;
 public class House : MonoBehaviour
 {
     [SerializeField]
-    private int health;
+    public int health;
     public Transform target;
 
 

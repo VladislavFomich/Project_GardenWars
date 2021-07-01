@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolForObject: {fileID: 5243802188900643945, guid: de8c0e602f2d5e24eb8a59d23abe0d37, type: 3}
-  amount: 400
+  amount: 300
 --- !u!4 &790968195
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolForObject: {fileID: 6410191424051724681, guid: bc16daaaefdb28f4f8fd3c5998877175, type: 3}
-  amount: 400
+  amount: 300
 --- !u!114 &1376337315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPool: {fileID: 1376337314}
-  timeSpawn: 5
+  timeSpawn: 10
   spawn: {fileID: 2127173150}
 --- !u!1 &1449959608
 GameObject:
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolForObject: {fileID: 8718566337058490560, guid: 214320ab262817243a8017a1b9894566, type: 3}
-  amount: 50
+  amount: 300
 --- !u!4 &1449959610
 Transform:
   m_ObjectHideFlags: 0
