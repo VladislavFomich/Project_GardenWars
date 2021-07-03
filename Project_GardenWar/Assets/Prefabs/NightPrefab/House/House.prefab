@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6590906036283844098}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752472063292772034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalPosition: {x: 0, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8679614265344676377}
@@ -42,9 +42,10 @@ GameObject:
   - component: {fileID: 204907811926714641}
   - component: {fileID: 2013302778}
   - component: {fileID: 2013302775}
-  m_Layer: 0
+  - component: {fileID: 646445963}
+  m_Layer: 11
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +155,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  bulletPool: {fileID: 0}
-  spawn: {fileID: 1752472063292772034}
-  speedAttack: 0
   target: {fileID: 0}
+--- !u!114 &646445963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014590870755470329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1681082ddd8c11b4a88ab9634c4688ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  houseBullet: {fileID: 0}
+  dir: {x: 0, y: 0}
+  spawnTime: 0.3
+  spawnPoint: {fileID: 6590906036283844098}
+  cam: {fileID: 0}

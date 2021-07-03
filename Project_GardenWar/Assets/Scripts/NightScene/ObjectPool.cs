@@ -24,6 +24,7 @@ public class ObjectPool : MonoBehaviour
                 instance.transform.SetParent(transform);
                 instance.SetActive(false);
                 objectPool.Add(instance);
+
             }
         }
     }

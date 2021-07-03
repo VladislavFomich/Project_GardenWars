@@ -12,10 +12,12 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     private bool startAttack;
 
    public bool enemyTakeIt;
+    BoxCollider2D coll;
    
 
     public void CustomStart()
     {
+        coll = gameObject.GetComponent<BoxCollider2D>();
         bulletPool = GameObject.Find("PlantBulletManager").GetComponent<ObjectPool>();
         StartCoroutine(SpawnBullet());
     }
@@ -32,7 +34,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     {
         while (true)
         {
-            if (startAttack && gameObject.GetComponent<BoxCollider2D>().enabled == true)
+            if (startAttack && coll.enabled == true)
             {
                 bulletPool.ObjectAwake(spawn.transform.position);
             }
@@ -41,9 +43,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
     }
     private void FindTarget() 
     {
-        if (FieldManager.Instance.enemy.Count > 0)
-        {
-            startAttack = true;
+            startAttack = FieldManager.Instance.enemy.Count != 0;
             var distanceToTarget = float.MaxValue;
             foreach (var item in FieldManager.Instance.enemy)
             {
@@ -54,11 +54,6 @@ public class GeneralPlant : MonoBehaviour, IPoolable
                     target = item; 
                 }
             }
-        }
-        if (FieldManager.Instance.enemy.Count == 0)
-        {
-            startAttack = false;
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -71,12 +66,11 @@ public class GeneralPlant : MonoBehaviour, IPoolable
         
         ReturnToPool returnToPool = collision.gameObject.GetComponent<ReturnToPool>();
         returnToPool.OnObjectHit += GoToPool;
-        
     }
 
     void GoToPool(ReturnToPool returnToPool)
     {
-        if (target.gameObject.GetComponent<GeneralEnemy>().stayOnGround)
+        if(target.gameObject.GetComponent<GeneralEnemy>().stayOnGround)
         {
             returnToPool.OnObjectHit -= GoToPool;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
@@ -84,6 +78,7 @@ public class GeneralPlant : MonoBehaviour, IPoolable
         }
         else 
         {
+            WinManager.Instance.stealPlantCount += 1;
             returnToPool.OnObjectHit -= GoToPool;
             FieldManager.Instance.plants.Remove(gameObject.transform);
             gameObject.GetComponent<ReturnToPool>().Death();

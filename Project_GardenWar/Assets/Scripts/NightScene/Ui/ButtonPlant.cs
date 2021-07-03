@@ -10,10 +10,16 @@ public class ButtonPlant : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public ObjectPool plantsManager;
     public GameObject plant;
     private bool addedInList;
+    private Camera cam;
 
-   public void OnDrag(PointerEventData eventData)
+    private void Start()
     {
-        var pos = Camera.main.ScreenToWorldPoint(eventData.position);
+        cam = Camera.main;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        var pos = cam.ScreenToWorldPoint(eventData.position);
         pos.z = 0;
         plant.transform.position = pos;
     }

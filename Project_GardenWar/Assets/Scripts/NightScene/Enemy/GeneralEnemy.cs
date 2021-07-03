@@ -21,6 +21,12 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     int firstHealth;
     private bool attackHouse;
     private House house;
+    public Transform houseCheck;
+   public LayerMask houseLayer;
+    public float checkRadius = 0.5f;
+
+
+
     private void Awake()
     {
         firstHealth = health;
@@ -35,14 +41,17 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     {
         FindTarget();
         Move(moveTarget);
+        Death();
+        attackHouse = Physics2D.OverlapCircle(houseCheck.position, checkRadius, houseLayer);
+
+    }
+    private void Death()
+    {
         if (health <= 0)
         {
+            WinManager.Instance.dieEnemyCount += 1;
             FieldManager.Instance.enemy.Remove(gameObject.transform);
             gameObject.GetComponent<ReturnToPool>().Death();
-        }
-        if (Vector2.Distance(transform.position, FieldManager.Instance.house.position) > 0.2f)
-        {
-            attackHouse = false;
         }
     }
 
@@ -52,7 +61,6 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
         if (addedInList == false)
         {
             FieldManager.Instance.enemy.Add(gameObject.transform);
@@ -74,23 +82,12 @@ public class GeneralEnemy : MonoBehaviour, IPoolable
         {
             health -= collision.GetComponent<GeneralBullet>().damage;
         }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
         if (collision.name == "Ground")
         {
             stayOnGround = true;
         }
+    }
 
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Enter");
-        if (collision.gameObject.GetComponent<House>())
-        {
-            attackHouse = true;
-        }
-    }
     private void FindTarget()
     {
         moveTarget = null;

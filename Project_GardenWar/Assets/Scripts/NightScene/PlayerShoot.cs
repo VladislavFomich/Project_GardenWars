@@ -10,10 +10,12 @@ public class PlayerShoot : MonoBehaviour
     private bool startAttack;
     public float spawnTime;
     public Transform spawnPoint;
+    public Camera cam;
 
     private void Start()
     {
         StartCoroutine(SpawnBullet());
+        cam = Camera.main;
     }
 
     private void Update()
@@ -23,7 +25,7 @@ public class PlayerShoot : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject())
             {
                 startAttack = true;
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                Vector2 touchPos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
                 dir = touchPos - (new Vector2(transform.position.x, transform.position.y));
                 dir.Normalize();              
             }
