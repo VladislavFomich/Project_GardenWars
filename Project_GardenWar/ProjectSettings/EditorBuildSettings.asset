@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DayScene.unity
     guid: e0ffa8882dd4eb64ab30507aaa82bf4d
+  - enabled: 0
+    path: Assets/Scenes/ChoiceScene.unity
+    guid: 30e57a186aa77ec4ebf3c5ae4f068c3c
   - enabled: 1
     path: Assets/Scenes/NightScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729

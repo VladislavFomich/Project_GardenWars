@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class PlantManager : Singleton<PlantManager>
 {
+    
     public GameObject [] plants;
+    public int levelUpPlant;
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 }

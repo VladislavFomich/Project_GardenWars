@@ -44,6 +44,7 @@ public class ObjectPool : MonoBehaviour
             }
         }
         var instance = Instantiate(poolForObject);
+        instance.transform.SetParent(transform);
         objectPool.Add(instance);
         return instance;
     }

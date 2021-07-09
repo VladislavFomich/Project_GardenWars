@@ -12,9 +12,17 @@ public class ButtonPlant : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private bool addedInList;
     private Camera cam;
 
+
     private void Start()
     {
         cam = Camera.main;
+    }
+    private void Update()
+    {
+        if (WinManager.Instance.daysPlant == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -33,6 +41,7 @@ public class ButtonPlant : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         {
             FieldManager.Instance.plants.Add(plant.transform);
         }
+        WinManager.Instance.daysPlant -= 1;
         plant.GetComponent<BoxCollider2D>().enabled = true;
     }
 

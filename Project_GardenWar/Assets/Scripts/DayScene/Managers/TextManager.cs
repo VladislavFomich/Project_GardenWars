@@ -4,21 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TextManager : MonoBehaviour
 {
-    //public GameObject levelText;
-    //public GameObject damageText;
-    //public GameObject attackSpeedtext;
-    //public GameObject bulletSpeed;
-    public GameObject[] plantStats;
-    private Text[]  text;
+    public ActivateMenu activate;
+   public int num;
+    public Text[]  text;
 
-    private void Start()
+    private void Update()
+
     {
-        text = new Text[plantStats.Length];
-        for (int i = 0; i < plantStats.Length; i++)
+        if (activate.numOfPlant != 0)
         {
-            text[i] = plantStats[i].GetComponent<Text>();
+            num = activate.numOfPlant-1;
+            text[0].text = "Level " + PlantManager.Instance.plants[num].GetComponent<Plant>().level.ToString();
+            text[1].text = "Damage " + PlantManager.Instance.plants[num].GetComponent<Plant>().damage.ToString();
+            text[2].text = "Attack Speed " + PlantManager.Instance.plants[num].GetComponent<Plant>().bulletSpawnTime.ToString();
+            text[3].text = "Bullet Speed " + PlantManager.Instance.plants[num].GetComponent<Plant>().bulletSpeed.ToString();
         }
+     
 
     }
+
+    //public void LoadData(SaveLoadManager.Save.PlantSaveData save)
+    //{
+    //    text[0].text = save.level.ToString();
+    //    text[1].text = save.damage.ToString();
+    //    text[2].text = save.bulletSpawnTime.ToString();
+    //    text[0].text = save.bulletSpeed.ToString();
+    //}
 
 }

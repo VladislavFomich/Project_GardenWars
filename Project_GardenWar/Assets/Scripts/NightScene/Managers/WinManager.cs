@@ -16,9 +16,17 @@ public class WinManager : Singleton<WinManager>
     public GameObject loseMenu;
 
     public House house;
+
+    public int daysPlant;
     private void Awake()
     {
         Time.timeScale = 1;
+      
+        
+    }
+    private void Start()
+    {
+        daysPlant = PlantManager.Instance.levelUpPlant;
     }
     private void Update()
     {
@@ -27,7 +35,7 @@ public class WinManager : Singleton<WinManager>
             winMenu.SetActive(true);
             Time.timeScale = 0;
         }
-        if (stealPlantCount == plantCountCondition)
+        if (stealPlantCount == PlantManager.Instance.levelUpPlant)
         {
             loseMenu.SetActive(true);
             Time.timeScale = 0;
