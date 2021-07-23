@@ -22,12 +22,21 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Moved && !EventSystem.current.IsPointerOverGameObject() || Input.GetTouch(0).phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject())
+            Touch firstTouch = Input.GetTouch(0);
+            int id = firstTouch.fingerId;
+            if (firstTouch.phase == TouchPhase.Moved || firstTouch.phase == TouchPhase.Began)
             {
-                startAttack = true;
-                Vector2 touchPos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
-                dir = touchPos - (new Vector2(transform.position.x, transform.position.y));
-                dir.Normalize();              
+                if (!EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    startAttack = true;
+                    Vector2 touchPos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    dir = touchPos - (new Vector2(transform.position.x, transform.position.y));
+                    dir.Normalize();
+                }
+                else
+                {
+                    startAttack = false;
+                }
             }
         }
        else if (Input.touchCount == 0)

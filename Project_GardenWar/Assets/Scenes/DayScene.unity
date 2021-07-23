@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 354480456}
   - component: {fileID: 354480455}
   - component: {fileID: 354480454}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,8 @@ GameObject:
   - component: {fileID: 435362058}
   - component: {fileID: 435362060}
   - component: {fileID: 435362059}
-  m_Layer: 5
+  - component: {fileID: 435362061}
+  m_Layer: 13
   m_Name: PlantMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,6 +809,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435362057}
   m_CullTransparentMesh: 1
+--- !u!114 &435362061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435362057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98ea4a7b87373d40b361ccd5ebcf3b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 555310467}
+  buttonWater: {fileID: 1360294840}
+  buttonSeed: {fileID: 2082952199}
 --- !u!1 &457596765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1262,7 @@ GameObject:
   - component: {fileID: 580998180}
   - component: {fileID: 580998182}
   - component: {fileID: 580998181}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1785,7 +1801,7 @@ GameObject:
   - component: {fileID: 1042087184}
   - component: {fileID: 1042087186}
   - component: {fileID: 1042087185}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2013,7 +2029,7 @@ GameObject:
   - component: {fileID: 1232640057}
   - component: {fileID: 1232640059}
   - component: {fileID: 1232640058}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2171,7 +2187,7 @@ GameObject:
   - component: {fileID: 1259860254}
   - component: {fileID: 1259860256}
   - component: {fileID: 1259860255}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: PlantFoto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2446,8 +2462,7 @@ GameObject:
   - component: {fileID: 1360294842}
   - component: {fileID: 1360294841}
   - component: {fileID: 1360294840}
-  - component: {fileID: 1360294839}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2471,23 +2486,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -167.07, y: 1.3001709}
+  m_AnchoredPosition: {x: -167.07, y: 1.300293}
   m_SizeDelta: {x: 250, y: 153.8542}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1360294839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360294837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed8578265614c843891ccf929d9b3c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 555310467}
-  button: {fileID: 1360294840}
 --- !u!114 &1360294840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2581,7 +2582,7 @@ GameObject:
   - component: {fileID: 1393774706}
   - component: {fileID: 1393774708}
   - component: {fileID: 1393774707}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: AttackSpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2872,7 +2873,7 @@ GameObject:
   - component: {fileID: 1464253855}
   - component: {fileID: 1464253857}
   - component: {fileID: 1464253856}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3100,7 +3101,7 @@ GameObject:
   - component: {fileID: 1540682016}
   - component: {fileID: 1540682018}
   - component: {fileID: 1540682017}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3774,7 +3775,7 @@ GameObject:
   - component: {fileID: 1948121820}
   - component: {fileID: 1948121822}
   - component: {fileID: 1948121821}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: BulletFlySpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3933,8 +3934,7 @@ GameObject:
   - component: {fileID: 2082952201}
   - component: {fileID: 2082952200}
   - component: {fileID: 2082952199}
-  - component: {fileID: 2082952198}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3961,20 +3961,6 @@ RectTransform:
   m_AnchoredPosition: {x: 124.99998, y: 0}
   m_SizeDelta: {x: 250, y: 153.85419}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &2082952198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082952196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8aafe8ffc8d18148b563b97508f51a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 555310467}
-  button: {fileID: 2082952199}
 --- !u!114 &2082952199
 MonoBehaviour:
   m_ObjectHideFlags: 0

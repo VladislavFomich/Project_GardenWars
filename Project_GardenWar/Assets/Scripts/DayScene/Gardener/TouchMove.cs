@@ -10,7 +10,7 @@ public class TouchMove : MonoBehaviour
     public float speed;
     public bool isItWalk;
 
-    int layerMask = 1 << 7;
+    int plantMask = 1 << 7;
     private void Start()
     {
         Time.timeScale = 1;
@@ -22,16 +22,25 @@ public class TouchMove : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            Touch firstTouch = Input.GetTouch(0);
+            if (firstTouch.phase == TouchPhase.Began)
             {
-                touchPos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
-                RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero, Mathf.Infinity, layerMask);
+                touchPos = cam.ScreenToWorldPoint(firstTouch.position);
+                RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero, Mathf.Infinity, plantMask);
                 if (hit)
                 {
                     
                   hit.collider.gameObject.GetComponent<Plant>().isItTouched = true;
                 }
-                isItWalk = true;
+                int id = firstTouch.fingerId;
+                if (EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    isItWalk = false;
+                }
+                else
+                {
+                    isItWalk = true;
+                }
             }
         }
 
