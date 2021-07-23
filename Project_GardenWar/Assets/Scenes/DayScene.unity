@@ -469,8 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 781236558}
   plant: {fileID: 264716690}
   startTimer: 0
@@ -952,8 +952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 517129849}
   plant: {fileID: 457596769}
   startTimer: 0
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
+  gameSeconds: 3
   gameMinutes: 0
   textTime: {fileID: 1440491206}
   plant: {fileID: 563614567}
@@ -1537,8 +1537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 237932832}
   plant: {fileID: 792927505}
   startTimer: 0
@@ -1686,8 +1686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 1250395675}
   plant: {fileID: 797799775}
   startTimer: 0
@@ -1997,8 +1997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 380377622}
   plant: {fileID: 1110251230}
   startTimer: 0
@@ -2471,7 +2471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -167.07, y: 1.3001099}
+  m_AnchoredPosition: {x: -167.07, y: 1.3001709}
   m_SizeDelta: {x: 250, y: 153.8542}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1360294839
@@ -3084,8 +3084,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 1460279421}
   plant: {fileID: 1467266477}
   startTimer: 0
@@ -3543,8 +3543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 2061946720}
   plant: {fileID: 1828417140}
   startTimer: 0
@@ -3758,8 +3758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b8bc92263fa84eb9170161d28a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeconds: 5
-  gameMinutes: 0
+  gameSeconds: 30
+  gameMinutes: 1
   textTime: {fileID: 1753361599}
   plant: {fileID: 1934740238}
   startTimer: 0

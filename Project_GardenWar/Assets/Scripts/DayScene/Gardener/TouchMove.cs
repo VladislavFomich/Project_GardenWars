@@ -26,7 +26,7 @@ public class TouchMove : MonoBehaviour
             {
                 touchPos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
                 RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero, Mathf.Infinity, layerMask);
-                if ( hit)
+                if (hit)
                 {
                     
                   hit.collider.gameObject.GetComponent<Plant>().isItTouched = true;

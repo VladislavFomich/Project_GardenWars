@@ -6,9 +6,13 @@ using UnityEngine;
 {
     public int damage;
     public float bulletSpeed;
-
+    ReturnToPool returnToPool;
+    private void Start()
+    {
+        returnToPool = gameObject.GetComponent<ReturnToPool>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.GetComponent<ReturnToPool>().Death();
+        returnToPool.Death();
     }
 }

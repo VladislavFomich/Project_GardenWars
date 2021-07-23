@@ -17,13 +17,7 @@ public class ButtonPlant : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         cam = Camera.main;
     }
-    private void Update()
-    {
-        if (WinManager.Instance.daysPlant == 0)
-        {
-            gameObject.SetActive(false);
-        }
-    }
+
 
     public void OnDrag(PointerEventData eventData)
     {

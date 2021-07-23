@@ -16,9 +16,13 @@ public class Plant : MonoBehaviour
     public bool addedSeed;
     
     public bool isItTouched;
+    bool levelUp;
 
-
-
+    SpriteRenderer spriteRend;
+    private void Start()
+    {
+        spriteRend = gameObject.GetComponent<SpriteRenderer>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Enter");
@@ -37,14 +41,18 @@ public class Plant : MonoBehaviour
             damage = 3;
             bulletSpeed = 1f;
         }
+        if (timer.textTime.text == "0:0")
+        {
+            if (levelUp == false)
+            {
+                levelUp = true;
+                level += 1;
+                spriteRend.color = Color.green;
+            }
+        }
         if (addedSeed && addedWater && level == 0 )
         {
-            addedSeed = false;
-            addedWater = false;
-            
-            timer.textTime.gameObject.SetActive(true);
-            timer.startTimer = true;
-            gameObject.GetComponent<SpriteRenderer>().color = Color.cyan;
+            spriteRend.color = Color.cyan;
         }
     }
     //public void LoadData(SaveLoadManager.Save.PlantSaveData save)

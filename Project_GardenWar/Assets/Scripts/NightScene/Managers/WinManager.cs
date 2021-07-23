@@ -35,11 +35,7 @@ public class WinManager : Singleton<WinManager>
             winMenu.SetActive(true);
             Time.timeScale = 0;
         }
-        if (stealPlantCount == PlantManager.Instance.levelUpPlant)
-        {
-            loseMenu.SetActive(true);
-            Time.timeScale = 0;
-        }
+
         if (house.health <= 0 )
         {
             loseMenu.SetActive(true);
